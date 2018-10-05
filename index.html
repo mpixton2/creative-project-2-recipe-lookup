@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Freelancer - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+  </head>
+  
+    <script>
+      
+      // Create the XHR object.
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    // XHR for Chrome/Firefox/Opera/Safari.
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest != "undefined") {
+    // XDomainRequest for IE.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    // CORS not supported.
+    xhr = null;
+  }
+  return xhr;
+}
+
+// Make the actual CORS request.
+function makeCorsRequest() {
+  var app_id = 'b91f729d';
+  var app_key = '9c79b76cc3aad7e1c11d2f11a558834c';
+  let recipe = document.getElementById('recipe').value;
+  let pre = document.getElementById('response');
+
+  var url = 'https://api.edamam.com/search?q=' + recipe + '&app_id=' + app_id + '&app_key=' + app_key;
+
+  var xhr = createCORSRequest('POST', url);
+  if (!xhr) {
+    alert('CORS not supported');
+    return;
+  }
+
+  // Response handlers.
+  xhr.onload = function() {
+    
+    var text = xhr.responseText;
+    pre.innerHTML = text;
+  };
+
+  xhr.onerror = function() {
+    alert('Woops, there was an error making the request.');
+  };
+
+
+  pre.innerHTML = 'Loading...';
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(recipe);
+}
+      
+  </script>
+
+  <body id="page-top">
+
+
+    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container">
+        <img class="img-fluid mb-5 d-block mx-auto" src="https://classroomclipart.com/images/gallery/Clipart/Culinary/TN_chef-wearing-white-hat-welcome-jester-with-smile-clipart-5122.jpg" alt="">
+        <h1 class="text-uppercase mb-0">Nutrition of Recipes Lookup</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">Look up a recipe to find all the nutritional facts you could ever need!</h2>
+      </div>
+    </header>
+    
+    
+    <!-- About Section -->
+    <section class="bg-primary text-white mb-0" id="about" "text-center">
+      <div class="container" >
+        <h2 class label for="recipe">Search for a recipe </label>
+        <p></p>
+    <input type="text" name="recipe" id="recipe">
+        </div>
+        <div class="text-center mt-4">
+          <a class="btn btn-xl btn-outline-light" onclick="makeCorsRequest()">
+            <i class="fas fa-download mr-2"></i>
+            Get Results
+          </a>
+        </div>
+      </div>
+      
+    <br>
+    <pre id="response">
+    </pre>
+    
+    </section>-->
+
+   
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed ">
+      <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+    </div>
+
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/freelancer.min.js"></script>
+
+  </body>
+
+</html>
